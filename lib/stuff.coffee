@@ -1,12 +1,11 @@
-window.inject = (selectorOptions) ->
+jQuery.fn.affix = window.affix = (selectorOptions) ->
   _(selectorOptions.split(' ')).inject(($parent, elementSelector) ->
     elementSplit = elementSelector.split('#')
-    if elementSplit.length > 1
-      elementName = elementSplit[0] || "div"
+    elementName = elementSplit[0] if elementSplit.length > 1
 
     idSplit = if elementSplit.length > 1 then elementSplit[1].split('.') else elementSelector.split('.')
     id = idSplit[0]
     classes = _(idSplit).rest()
 
-    $("<#{elementName} id=\"#{id}\" class=\"#{classes.join(' ')}\"></div>").appendTo($parent)
-  , $('body'))
+    $("<#{elementName || "div"} id=\"#{id}\" class=\"#{classes.join(' ')}\"></div>").appendTo($parent)
+  , if this.jquery? then this else $('body'))
