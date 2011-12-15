@@ -36,3 +36,5 @@ beforeEach(function(){
 ```
 
 It's just like jQuery, but in reverse! (And, of course, it'll clean up after itself after your spec runs.)
+
+For other examples, check out the array of working selectors from the project's [specs](https://github.com/searls/jasmine-fixture-2/blob/master/spec/jasmine-fixture-spec.coffee).
