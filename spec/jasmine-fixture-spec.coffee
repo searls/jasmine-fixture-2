@@ -5,7 +5,7 @@ describe "affix", ->
         $result = affix(this.actual)
         $.contains('body',this.actual) && $result.is(this.actual)
 
-  _([
+  EXAMPLES = [
     '.foo',
     '.bar',
     '#baz',
@@ -15,8 +15,13 @@ describe "affix", ->
     'span#spaghetti.sauce',
     # 'article.sauce#spaghetti',
     # 'foo > bar'
-  ]).each (selector) ->
+  ]
+
+  _(EXAMPLES).each (selector) ->
     Then -> expect(selector).toInjectProperly()
+    Then -> expect($('body')).not.toContain(selector)
+
+
 
   context "chaining", ->
     Given -> @$container = affix('.container')
